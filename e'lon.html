@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>E'lonlar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .price {
+      color: #38bdf8;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .btn {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn.delete {
+      background: #ef4444;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Mening e'lonlarim</h1>
+<div class="container" id="ads-container"></div>
+
+<script>
+  // Dastlabki e'lonlar
+  const initialAds = [
+    { id: 1, title: "Kia Sedona", price: "400,000,000 so'm", img: "https://via.placeholder.com/400x200", author: "me" },
+    { id: 2, title: "Ingliz tili speaking klubi", price: "350,000 so'm", img: "https://via.placeholder.com/400x200", author: "other" },
+    { id: 3, title: "uyem wifuuy23f2r2323r", price: "53,878,374 so'm", img: "https://via.placeholder.com/400x200", author: "me" },
+    { id: 4, title: "dfsdfsd", price: "323,233 so'm", img: "https://via.placeholder.com/400x200", author: "other" }
+  ];
+
+  // LocalStorage dan o'qish yoki dastlabki ro'yxatdan olish
+  // Always clear user's own ads so they don't show up
+localStorage.setItem("myAds", JSON.stringify([]));
+let myAds = [];
+
+  const container = document.getElementById("ads-container");
+
+  function renderAds() {
+    container.innerHTML = "";
+    if (myAds.length === 0) {
+      container.innerHTML = "<p style='text-align:center;'>E'lonlar yo'q</p>";
+      return;
+    }
+    myAds.forEach((ad, index) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${ad.img}" alt="${ad.title}">
+        <div class="card-body">
+          <div>
+            <div class="title">${ad.title}</div>
+            <div class="price">${ad.price}</div>
+          </div>
+          <div class="buttons">
+            <button class="btn">Bog'lanish</button>
+            <button class="btn delete" onclick="deleteAd(${index})">O'chirish</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function deleteAd(i) {
+    myAds.splice(i, 1);
+    localStorage.setItem("myAds", JSON.stringify(myAds)); // o'chirishni saqlash
+    renderAds();
+  }
+
+  renderAds();
+</script>
+
+</body>
+</html>

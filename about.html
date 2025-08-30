@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduMarket — Talabalar uchun bozor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">🎓</div>
+        <div class="brand-text">
+          <h1>EduMarket</h1>
+          <span>O‘quvchi & Talaba bozori</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="kirish.html"><button class="btn" id="loginBtn">Kirish</button></a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="about">
+    <div class="slider-photo">
+      <div class="slider">
+        <div>
+          <img src="media/About1.png" alt="About1 image">
+        </div>
+        <div>
+          <img src="media/About2.png" alt="About2 image">
+        </div>
+        <div>
+          <img src="media/About3.png" alt="About3 image">
+        </div>
+        <div>
+          <img src="media/About4.png" alt="About4 image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="f-col">
+        <strong>EduMarket</strong>
+        <p>Talabalar uchun xavfsiz va qulay savdo maydoni.</p>
+      </div>
+      <div class="f-col">
+        <span class="muted">Aloqa uchun</span>
+        <a href="https://t.me/edumarket_alg" class="link">@edumarket_alg</a>
+      </div>
+      <div class="f-col">
+        <span class="muted">Huquqiy</span>
+        <a href="#" class="link">Foydalanish shartlari</a>
+        <a href="#" class="link">Maxfiylik</a>
+      </div>
+    </div>
+  </footer>
+<script>
+  $(document).ready(function () {
+    $('.slider').slick({
+      dots: true,
+      infinite: true,
+      speed: 900,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      arrows: true
+    });
+  });
+</script>
+<script src="app.js"></script>
+</body>
+
+</html>

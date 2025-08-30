@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduMarket — Talabalar uchun bozor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">🎓</div>
+        <div class="brand-text">
+          <h1>EduMarket</h1>
+          <span>O‘quvchi & Talaba bozori</span>
+        </div>
+      </div>
+
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Kitob, noutbuk, repetitor... qidiring" />
+        <button id="searchBtn" class="btn">Qidirish</button>
+      </div>
+
+      <nav class="nav">
+        <button class="btn ghost" id="postBtn">E'lon joylash</button>
+        <button class="btn ghost" id="walletBtn">💎 <span id="walletPoints">0</span></button>
+        <a href="e'lon.html"><button class="btn" id="exploreBtn">E'lonlarim</button></a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h2>Talabalar uchun eng qulay onlayn bozor</h2>
+        <p>Kitoblar, elektronika, repetitorlik va konspektlar — hammasi bitta joyda. Qulay qidiruv, ishonchli
+          sotuvchilar va bonus tizimi.</p>
+        <div class="hero-actions">
+          <button id="ctaBrowse" class="btn lg">E’lonlarni ko‘rish</button>
+          <button id="ctaPost" class="btn lg ghost">E’lon qo‘shish</button>
+        </div>
+        <div class="badges">
+          <span class="badge">Yangi</span>
+          <span class="badge">Tez & Oson</span>
+          <span class="badge success">Talaba bonuslari</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="card-demo">
+          <div class="img ph"></div>
+          <div class="lines">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="card-demo second">
+          <div class="img ph"></div>
+          <div class="lines">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h3 class="section-title">Bo‘limlar</h3>
+    <div class="categories" id="categories">
+      <button class="chip active" data-cat="all">Barchasi</button>
+      <button class="chip" data-cat="kitob">Kitoblar</button>
+      <button class="chip" data-cat="elektronika">Elektronika</button>
+      <button class="chip" data-cat="xizmat">Xizmatlar</button>
+      <button class="chip" data-cat="konspekt">Konspektlar</button>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="list-header">
+      <h3 class="section-title">E’lonlar</h3>
+      <div class="sort">
+        <label for="sortSelect">Saralash:</label>
+        <select id="sortSelect">
+          <option value="new">Yangi</option>
+          <option value="cheap">Arzon→Qimmat</option>
+          <option value="exp">Qimmat→Arzon</option>
+          <option value="rating">Reyting</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+
+    <div class="empty hide" id="emptyState">
+      <div class="empty-art">📭</div>
+      <p>Siz qidirgan bo‘yicha e’lon topilmadi. Boshqa so‘z bilan urinib ko‘ring.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="f-col">
+        <strong>EduMarket</strong>
+        <p>Talabalar uchun xavfsiz va qulay savdo maydoni.</p>
+      </div>
+      <div class="f-col">
+        <span class="muted">Aloqa</span>
+        <a href="#" class="link">support@edumarket.example</a>
+      </div>
+      <div class="f-col">
+        <span class="muted">Huquqiy</span>
+        <a href="#" class="link">Foydalanish shartlari</a>
+        <a href="#" class="link">Maxfiylik</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Post Modal -->
+  <div class="modal hide" id="postModal" role="dialog" aria-modal="true" aria-labelledby="postTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h4 id="postTitle">Yangi e’lon qo‘shish</h4>
+        <button class="icon-btn" id="closeModal" aria-label="Yopish">✖</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <label>Nomi</label>
+          <input type="text" id="pTitle" placeholder="Masalan: Mikroiqtisod darsligi" />
+        </div>
+        <div class="form-row">
+          <label>Kategoriya</label>
+          <select id="pCat">
+            <option value="kitob">Kitob</option>
+            <option value="elektronika">Elektronika</option>
+            <option value="xizmat">Xizmat</option>
+            <option value="konspekt">Konspekt</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Narx (UZS)</label>
+          <input type="number" id="pPrice" placeholder="50000" />
+        </div>
+        <div class="form-row">
+          <label>Joylashuv</label>
+          <input type="text" id="pLoc" placeholder="Toshkent, Chilonzor" />
+        </div>
+
+        <div class="form-row">
+          <label>Telegram Username</label>
+          <input type="text" id="pTg" placeholder="Username" />
+        </div>
+
+        <div class="form-row">
+          <label>Tavsif</label>
+          <textarea id="pDesc" rows="3" placeholder="Qisqacha tavsif yozing"></textarea>
+        </div>
+        <div class="form-row">
+          <label>Rasm (ixtiyoriy)</label>
+          <input type="file" id="pImg" accept="image/*" />
+          <small class="muted">Rasm local ko‘rinishda saqlanadi (brauzerda).</small>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn ghost" id="cancelPost">Bekor qilish</button>
+        <button class="btn" id="savePost">Saqlash</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
